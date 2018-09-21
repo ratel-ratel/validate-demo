@@ -28,4 +28,15 @@ public class LotteryRecordController {
         }
         return request;
     }
+    @RequestMapping(value = "/deleteLotteryRecord")
+    public LotteryRecord  deleteLotteryRecord(@RequestBody LotteryRecord request) throws AttributeValidatorException {
+        try {
+            request.validate(ValidatorConditionType.READ);
+        } catch (AttributeValidatorException e) {
+            log.info("error: {}", e);
+            log.info("Message: {}", e.getMessage());
+            throw e;
+        }
+        return request;
+    }
 }
